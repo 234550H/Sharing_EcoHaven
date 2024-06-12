@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import {
+  CDBSidebar,
+  CDBSidebarContent,
+  CDBSidebarHeader,
+  CDBSidebarMenu,
+  CDBSidebarMenuItem,
+} from 'cdbreact';
+import { NavLink } from 'react-router-dom';
+import '../src/assets/style/backend/dashboard.css';
+
+const Sidebar = () => {
+  const [showAccountDropdown, setShowAccountDropdown] = useState(false);
+
+  const toggleAccountDropdown = () => {
+    setShowAccountDropdown(!showAccountDropdown);
+  };
+
+  return (
+    <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+      <CDBSidebar textColor="#fff" backgroundColor="green">
+        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
+          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+            EcoHaven
+          </a>
+        </CDBSidebarHeader>
+
+        <CDBSidebarContent className="sidebar-content">
+          <CDBSidebarMenu>
+            <NavLink exact to="/overview" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">Overview</CDBSidebarMenuItem>
+            </NavLink>
+            <div className="dropdown" onClick={toggleAccountDropdown}>
+              <CDBSidebarMenuItem icon="user">
+                Account
+                <i className={`fa fa-chevron-${showAccountDropdown ? 'up' : 'down'} ml-2`}></i>
+              </CDBSidebarMenuItem>
+              {showAccountDropdown && (
+                <div className="dropdown-content">
+                  <NavLink exact to="/account/staff" activeClassName="activeClicked">
+                    <CDBSidebarMenuItem icon="user">Staff</CDBSidebarMenuItem>
+                  </NavLink>
+                  <NavLink exact to="/account/users" activeClassName="activeClicked">
+                    <CDBSidebarMenuItem icon="users">Users</CDBSidebarMenuItem>
+                  </NavLink>
+                </div>
+              )}
+            </div>
+
+            <NavLink exact to="/events" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="calendar">Events</CDBSidebarMenuItem>
+            </NavLink>
+  
+              <NavLink
+                exact
+                to="/Bookings"
+                activeClassName="activeClicked"
+                className="nav-link"
+              >
+                <CDBSidebarMenuItem icon="book">Bookings</CDBSidebarMenuItem>
+              </NavLink>
+          
+
+            <NavLink exact to="/points" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="star">Points</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/reward-collection" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="gift">Reward Collection</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/payment" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="money-bill">Payment</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/refund" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="undo">Refund</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/mailing-list" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="envelope">Mailing List</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/review" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="comment">Review</CDBSidebarMenuItem>
+            </NavLink>
+          </CDBSidebarMenu>
+        </CDBSidebarContent>
+      </CDBSidebar>
+    </div>
+  );
+};
+
+export default Sidebar;

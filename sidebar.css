@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, 'Helvetica', sans-serif;
+  margin: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #14772B;
+  overflow-x: hidden;
+
+}
+
+.sidenav a, .dropdown-btn {
+  padding: 12px 8px; /* Increased padding to create more spacing */
+  text-decoration: none;
+  font-size: 20px;
+  color: #f0f0f0;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.sidenav a.active, .sidenav a:active {
+  color:white !important;
+  font-weight: bold; /* Bold text for active link */
+}
+
+.dropdown-container {
+  display: none;
+  background-color: #03380f;
+  padding-left: 8px;
+}
+
+.dropdown-container.show {
+  display: block;
+}
+
+.ecohaven-background {
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.ecohaven-background a {
+  display: block;
+  color: #14772B; /* Match the sidebar background color for text contrast */
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.main {
+  margin-left: 200px;
+  font-size: 20px;
+  padding: 0px 10px;
+}
+.icon{
+margin-right: 10px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}

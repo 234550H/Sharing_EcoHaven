@@ -1,43 +1,49 @@
-module.exports = (sequelize, DataTypes) => {
-    const Event = sequelize.define('Event', {
-        eventId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        activity: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        organization: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        startDate: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        endDate: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        startEndTime: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        amount: {
-            type: DataTypes.FLOAT,
-            allowNull: true
-        }
-    });
+// models/event.js
 
-    return Event;
+module.exports = (sequelize, DataTypes) => {
+  const Event = sequelize.define('Event', {
+    eventId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    activity: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    organization: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    startEndTime: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    amount: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    pictureUrl: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
+  });
+
+  return Event;
 };

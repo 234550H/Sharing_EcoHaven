@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -18,7 +20,7 @@ const upload = multer({ storage: storage });
 
 // POST endpoint to create a new event with file upload
 router.post('/events', upload.single('eventPicture'), async (req, res) => {
-  const { activity, location, organization, startDate, endDate, startEndTime, description, amount } = req.body;
+  const { eventName, activity, location, organization, startDate, endDate, startEndTime, description, amount } = req.body;
   const eventPicture = req.file;  // Uploaded file (event picture)
 
   try {
@@ -30,6 +32,7 @@ router.post('/events', upload.single('eventPicture'), async (req, res) => {
 
     // Create new event in database
     const newEvent = await db.Event.create({
+      eventName,
       activity,
       location,
       organization,
@@ -78,7 +81,7 @@ router.get('/events/:eventId', async (req, res) => {
 // PUT update an event by ID
 router.put('/events/:eventId', upload.single('eventPicture'), async (req, res) => {
   const eventId = req.params.eventId;
-  const { activity, location, organization, startDate, endDate, startEndTime, description, amount } = req.body;
+  const { eventName, activity, location, organization, startDate, endDate, startEndTime, description, amount } = req.body;
 
   try {
     // Find the event by ID
@@ -91,13 +94,14 @@ router.put('/events/:eventId', upload.single('eventPicture'), async (req, res) =
     if (req.file) {
       // Remove existing picture file if any
       if (event.pictureUrl) {
-        fs.unlinkSync(event.pictureUrl);
+        fs.unlinkSync(path.join(__dirname, '..', event.pictureUrl));
       }
       // Update pictureUrl with new file path
       event.pictureUrl = req.file.path;
     }
 
     // Update event data
+    event.eventName = eventName;
     event.activity = activity;
     event.location = location;
     event.organization = organization;
@@ -133,7 +137,7 @@ router.delete('/events/:eventId', async (req, res) => {
 
     // Remove the associated picture file if any
     if (event.pictureUrl) {
-      fs.unlinkSync(event.pictureUrl);
+      fs.unlinkSync(path.join(__dirname, '..', event.pictureUrl));
     }
 
     res.json({ message: 'Event deleted successfully' });

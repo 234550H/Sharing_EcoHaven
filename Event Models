@@ -1,11 +1,13 @@
-// models/event.js
-
 module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
     eventId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
+    },
+    eventName: {
+      type: DataTypes.STRING,  
+      allowNull: false
     },
     activity: {
       type: DataTypes.STRING,

@@ -35,7 +35,8 @@ import Box from '@mui/material/Box';
                     height: '250px',
                     maxWidth: '100%',
                     border: '5px solid #14772B',  // Adding border style
-                    marginBottom: '10px'  // Adjust margin bottom as needed
+                    marginBottom: '10px',  // Adjust margin bottom as needed
+                    borderRadius: '15px'
                   }}
                 />
                 <p><b>{product.leaves}</b> Leaves</p>

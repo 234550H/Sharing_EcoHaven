@@ -1,0 +1,26 @@
+/* shop */
+.shop {
+    margin-bottom: 50px;
+}
+
+/* button */
+.redeembutton {
+    margin-left: 5px;
+    background-color: #14772B;
+    padding: 14px 20px;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.redeembutton a {
+    color: white;
+    text-decoration: none;
+}
+
+.redeembutton:hover {
+    background-color: #45a049;
+}

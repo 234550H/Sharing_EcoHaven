@@ -1,9 +1,8 @@
 import React from 'react';
 
-import '../../assets/styles/aboutus.css';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/footer';
-import { Box, Typography, Button, Container, Grid } from '@mui/material';
+import { Box, Typography, Container, Grid } from '@mui/material';
 
 import HeadingImage from '../../assets/images/aboutus.png';
 import WelcomeImage from '../../assets/images/event.jpg';
